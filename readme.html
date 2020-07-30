@@ -1,0 +1,39 @@
+<html>
+<p>Mesoscopic model of size dynamics
+</p><p>Hazan L, Ziv NE (2020) Activity dependent and independent determinants of synaptic size diversity. J Neuroscience
+</p><p>The model, written in C as a Win32 console application, is provided as two source files and two header files:
+</p><ul>
+  <li>Sim dynamics and FRAP.c
+  </li><li>rand.c
+  </li><li>standard.h
+  </li><li>rand.h</li></ul>
+<p>The latter 3 files are part of the cryptographic random number generator ISAAC (Indirection, Shift, Accumulate, Add, and Count) <a href="http://burtleburtle.net/bob/rand/isaacafa.html">http://burtleburtle.net/bob/rand/isaacafa.html</a> Used here to generate streams of pseudorandom numbers
+</p><p>The code was compiled and run using Visual Studio 2017
+</p><p>To compile using Visual C++:
+</p><ol>
+  <li>Create a new project (File--&gt;New--&gt;Project...)
+  </li><li>Create a Visual C++, Empty Project
+  </li><li>Add the four files to the project as Source Files and Header Files, respectively using the Solution Explorer
+  </li><li>Compile and run</li></ol>
+<p>Two tab delimited text files are generated:
+</p><ol>
+  <li>Synapse size trajectories for all synapses (rows) at all simulated time steps (columns). Synapse size is defined as the momentary # of molecules bound to the synapse's matrix
+  </li><li># of bound 'fluorescent' molecules for the 'photobleached' synapses (rows) at all simulated time steps (columns) starting at the photobleaching time step</li></ol>
+<p>All parameters and output file names are 'hardwired' into the code.
+To modify these, edit the definitions at the top of the file "Sim dynamics and FRAP.c"
+</p><p>
+<pre>
+MATRIXDIM Matrix dimension (matrix size will be MATRIXDIM x MATRIXDIM)
+N_SYNAPSES Number of synapses (matrices) that will be simulated
+STEPS Number of simulation steps to run
+P_ON Maximal On rate (scales with # of free molecules)
+P_OFF Maximal Off rate
+ALPHA Non-specific binding rate (scales with # of free molecules)
+TOTAL_MOLECULES Total amount of scaffold molecules in the 'cell'
+FRAP_CYCLE Simulation cycle at which 'photobleaching' will occur
+FRAP_SYNAPSES Number of synapses to photobleach
+OUTPUTFILENAME Full path to simulation output file
+FRAPOUTPUTFILENAME Full path to FRAP data output file
+</pre>
+</p>
+</html>
